@@ -30,13 +30,13 @@
           :for="`report_btn_${report.p}_${new Date(report.t).getTime()}`"
           >Actions</label
         >
-        <NuxtLink
+        <a
           class="p-2 bg-gray-600 text-white rounded-xl transition duration-500 ease-in-out hover:bg-gray-400 w-24 text-center"
-          :to="`/reports/view/${report.i}`"
+          :href="`/reports/view/${report.i}`"
           :id="`report_btn_${report.p}_${new Date(report.t).getTime()}`"
         >
           Actions
-        </NuxtLink>
+        </a>
       </div>
       <div class="flex flex-col space-y-1 p-2">
         <label

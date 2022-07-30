@@ -22,15 +22,14 @@
             @keydown.enter="addComment"
           />
           <div
-          v-if = "report.cs"
-            v-for="(cs, i) in report.cs
-              .map((x, i) => ({ comment: x, time: report.ts[i] }))
-              .sort((a, b) => a.time - b.time)"
+          v-if = "report.cs && report.cs.length !== 0"
+            v-for="cs in report.cs
+              .sort((a, b) => a.t - b.t)"
             :key="`comment_${i}`"
             class="flex flex-col space-y-1"
           >
-            <span>{{ cs.comment }}</span>
-            <span class="text-xs">{{ getTime(cs.time) }}</span>
+            <span>{{ cs.c }}</span>
+            <span class="text-xs">{{ getTime(cs.t) }}</span>
           </div>
         </div>
       </div>
@@ -84,8 +83,7 @@ const addComment = async () => {
     }
   );
   if (result) {
-    report.value.cs.push(comment.value);
-    report.value.ts.push(Date.now());
+    report.value.cs.push({c: comment.value, t: Date.now()});
   }
   console.log(result);
 };
